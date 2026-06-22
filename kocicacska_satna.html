@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kočičácká Šatna</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Comic Sans MS', 'Trebuchet MS', sans-serif;
+            background: linear-gradient(135deg, #FF8C42 0%, #2C3E50 25%, #F5DEB3 50%, #8B4513 75%, #FF8C42 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease infinite;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            text-align: center;
+            border: 5px solid #FF8C42;
+        }
+
+        .cat-head {
+            font-size: 80px;
+            margin-bottom: 20px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        h1 {
+            color: #2C3E50;
+            font-size: 48px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .subtitle {
+            color: #8B4513;
+            font-size: 18px;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .color-bar {
+            display: flex;
+            height: 15px;
+            margin: 20px 0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .color-bar div {
+            flex: 1;
+        }
+
+        .color-1 { background-color: #FF8C42; }
+        .color-2 { background-color: #2C3E50; }
+        .color-3 { background-color: #F5DEB3; }
+        .color-4 { background-color: #8B4513; }
+
+        button {
+            background: linear-gradient(135deg, #FF8C42, #8B4513);
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            font-size: 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 20px 0;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            font-family: 'Comic Sans MS', 'Trebuchet MS', sans-serif;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        .wardrobe-box {
+            background: linear-gradient(135deg, #FFF8DC, #F5DEB3);
+            border: 3px dashed #FF8C42;
+            border-radius: 20px;
+            padding: 25px;
+            margin: 25px 0;
+            min-height: 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .wardrobe-text {
+            font-size: 18px;
+            color: #2C3E50;
+            line-height: 1.6;
+            margin: 15px 0;
+            font-weight: 500;
+        }
+
+        .cat-quote {
+            font-size: 24px;
+            color: #FF8C42;
+            margin-top: 10px;
+            font-style: italic;
+            font-weight: bold;
+        }
+
+        .emoji-clothes {
+            font-size: 60px;
+            margin: 15px 0;
+            animation: spin 3s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .instruction {
+            color: #8B4513;
+            font-size: 16px;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(245, 222, 179, 0.5);
+            border-radius: 15px;
+            border-left: 5px solid #FF8C42;
+        }
+
+        .paws {
+            font-size: 30px;
+            margin: 20px 0;
+        }
+
+        .cat-display {
+            background: linear-gradient(135deg, #FFE5B4, #FFF8DC);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 20px 0;
+            border: 2px solid #8B4513;
+            min-height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cat-with-outfit {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            align-items: center;
+            width: 100%;
+        }
+
+        .cat-image {
+            text-align: center;
+            font-size: 100px;
+            line-height: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 120px;
+            animation: wiggle 1s ease-in-out infinite;
+        }
+
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(-2deg); }
+            50% { transform: rotate(2deg); }
+        }
+
+        .outfit-info {
+            text-align: left;
+            padding: 15px;
+            background: white;
+            border-radius: 15px;
+            border-left: 4px solid #FF8C42;
+        }
+
+        .outfit-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #2C3E50;
+            margin-bottom: 8px;
+        }
+
+        .outfit-description {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 600px) {
+            .cat-with-outfit {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .cat-image {
+                font-size: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="cat-head">😺</div>
+        <h1>Kočičácká Šatna</h1>
+        <p class="subtitle">Tvůj osobní stylista s ocáskem</p>
+        
+        <div class="color-bar">
+            <div class="color-1"></div>
+            <div class="color-2"></div>
+            <div class="color-3"></div>
+            <div class="color-4"></div>
+        </div>
+
+        <div class="instruction">
+            🐾 Stiskni tlačítko a nech si poradit od kočky!
+        </div>
+
+        <button onclick="generateWardrobe()">
+            ✨ Jaká je moje šatna? ✨
+        </button>
+
+        <div id="wardrobeResult"></div>
+
+        <div class="paws">🐾 🐾 🐾</div>
+    </div>
+
+    <script>
+        const wardrobeSuggestions = [
+            {
+                clothes: "👗🎀",
+                catDisplay: "😺👗",
+                title: "Elegantní růžové šaty",
+                suggestion: "Dneska si vezmu elegantní růžové šaty! Jsou skvělé na to, aby se na mě všichni dívali... a pak jsem se mohla vrátit spát!"
+            },
+            {
+                clothes: "👔🕴️",
+                catDisplay: "😼👔",
+                title: "Formální oblek",
+                suggestion: "Formální oblek? Přece ne! Budu v něm vypadat jako nudný člověk. Raději zůstanu v krásné srsti!"
+            },
+            {
+                clothes: "🧥❄️",
+                catDisplay: "😸🧥",
+                title: "Zimní bunda",
+                suggestion: "Teplá zimní bunda! Perfektní na hraní v sněhu... a pak se na ní můžu vyvalovat!"
+            },
+            {
+                clothes: "👕🎨",
+                catDisplay: "😻👕",
+                title: "Barevné tričko",
+                suggestion: "Barevné tričko! Skvělé, když ho pak natrhám o si ploty. Máš to v sobě!"
+            },
+            {
+                clothes: "👖👟",
+                catDisplay: "😺👖",
+                title: "Sportovní outfit",
+                suggestion: "Pohodlné kalhoty a tenisky! Ideální na hraní s kouličkou a pronásledování myší!"
+            },
+            {
+                clothes: "🧥🌙",
+                catDisplay: "😻🧥",
+                title: "Noční kabát",
+                suggestion: "Stylový kabát na noc! Dokonalý na noční vylomeniny po domě v 3 ráno!"
+            },
+            {
+                clothes: "🎽💪",
+                catDisplay: "😼🎽",
+                title: "Sportovní oblečení",
+                suggestion: "Sportovní oblečení? Já jsem už přirozený sportovec - lezení, skákání, a to nejdůležitější - dřímání!"
+            },
+            {
+                clothes: "👗✨",
+                catDisplay: "😸👗",
+                title: "Slavnostní róba",
+                suggestion: "Slavnostní róba s flitry! Já jsem průšvihová dáma. Teď mě jen nikdo nevyholí!"
+            },
+            {
+                clothes: "🩳🏖️",
+                catDisplay: "😺🩳",
+                title: "Letní šortky",
+                suggestion: "Letní šortky? Bezva! Teď mohu ještě více ukazovat svou krásnou srst!"
+            },
+            {
+                clothes: "🧢🕶️",
+                catDisplay: "😻🧢",
+                title: "Stylová kombinace",
+                suggestion: "Kšiltovka a sluneční brýle! Vypadám jako celebrity! Teď mě všichni poznají a budou mi vzdávat hold!"
+            }
+        ];
+
+        const catSounds = ["Mňau!", "Prr... prr!", "Psst!", "Miaou!", "Purrrr!", "Mňaaau!"];
+
+        function generateWardrobe() {
+            const randomIndex = Math.floor(Math.random() * wardrobeSuggestions.length);
+            const suggestion = wardrobeSuggestions[randomIndex];
+            const sound = catSounds[Math.floor(Math.random() * catSounds.length)];
+
+            const resultDiv = document.getElementById("wardrobeResult");
+            
+            resultDiv.innerHTML = `
+                <div class="wardrobe-box">
+                    <div class="cat-display">
+                        <div class="cat-with-outfit">
+                            <div class="cat-image">${suggestion.catDisplay}</div>
+                            <div class="outfit-info">
+                                <div class="outfit-title">✨ ${suggestion.title}</div>
+                                <div class="outfit-description">${suggestion.suggestion}</div>
+                                <div class="cat-quote" style="margin-top: 10px; font-size: 18px;">"${sound}"</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // Animace: třesení tlačítka
+            const button = document.querySelector('button');
+            button.style.animation = 'none';
+            setTimeout(() => {
+                button.style.animation = 'bounce 0.5s';
+            }, 10);
+        }
+
+        // Generuj nápovědu na startu
+        window.addEventListener('load', function() {
+            const resultDiv = document.getElementById("wardrobeResult");
+            resultDiv.innerHTML = `
+                <div class="wardrobe-box">
+                    <div class="cat-display">
+                        <div style="font-size: 80px; margin-bottom: 15px;">😸</div>
+                        <div class="wardrobe-text">Ahoj! Jsem tvůj kočičácký stylista! Zjisti, co bys měla dnes na sobě a jak ti to bude slušet!</div>
+                    </div>
+                </div>
+            `;
+        });
+    </script>
+</body>
+</html>
